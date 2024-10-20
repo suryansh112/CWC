@@ -8,7 +8,7 @@ variable "node_role"{
     type = string
 }
 variable "subnet_id" {
-    type = string
+    type = list(string)
 }
 variable "cluster_name"{
     type = string
