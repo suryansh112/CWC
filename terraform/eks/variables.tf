@@ -1,7 +1,4 @@
-variable "node-group-name"{
-    type = string
-}
-variable "cluster"{
+variable "node_group_name"{
     type = string
 }
 variable "cluster_role" {
@@ -17,5 +14,8 @@ variable "cluster_name"{
     type = string
 }
 variable "instance_types"{
+    type = string
+}
+variable "node_group_name"{
     type = string
 }

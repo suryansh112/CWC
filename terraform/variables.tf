@@ -23,3 +23,6 @@ variable "node_role"{
     type = string
     sensitive = true
 }
+variable "node_group_name"{
+    default = "my-node-group"
+}
