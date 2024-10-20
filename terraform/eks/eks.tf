@@ -5,6 +5,9 @@ resource "aws_eks_cluster" "mycluster" {
   vpc_config {
     subnet_ids = var.subnet_id
   }
+  access_config {
+    authentication_mode = "API_AND_CONFIG_MAP"
+  }
 
 }
 
