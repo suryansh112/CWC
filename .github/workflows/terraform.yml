@@ -1,0 +1,56 @@
+name: EKS-Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      command: 
+        description: Choose whether to apply or destroy
+        required: true
+        default: apply
+        type: choice
+        options:
+        - apply
+        - destroy
+
+env:
+  ROLE_NAME : ${{secrets.ROLE_NAME}}
+  CLUSTER_ROLE: ${{secrets.CLUSTER_ROLE}}
+  NODE_ROLE: ${{secrets.NODE_ROLE}}
+permissions:
+  id-token: write  
+  contents: read
+jobs:
+  TERRAFORM_PLAN_APPLY:
+    if: inputs.command == 'apply'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone Repo
+      uses: actions/checkout@main
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{secrets.ROLE_NAME}} 
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
+        aws-region: us-east-1
+    - name: Creating EKS
+      run: |
+          cd terraform
+          terraform init
+          terraform plan -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" --auto-approve
+          terraform apply -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" --auto-approve
+  TERRAFORM_PLAN_DESTROY:
+    if: inputs.command == 'destroy'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone Repo
+      uses: actions/checkout@main
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{secrets.ROLE_NAME}} 
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
+        aws-region: us-east-1
+    - name: Destroying EKS
+      run: |
+          cd terraform
+          terraform init
+          terraform destroy -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" --auto-approve
