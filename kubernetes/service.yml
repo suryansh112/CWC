@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: pythonsvc
-  name: python-app-service
+  name: pythonappservice
 spec:
   ports:
   - port: 5000
