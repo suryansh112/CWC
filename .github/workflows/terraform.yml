@@ -36,7 +36,7 @@ jobs:
           cd terraform
           terraform init
           terraform plan -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE"
-          terraform plan --auto-approve -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" 
+          terraform plan -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" --auto-approve
   TERRAFORM_PLAN_DESTROY:
     if: inputs.command == 'destroy'
     runs-on: ubuntu-latest
