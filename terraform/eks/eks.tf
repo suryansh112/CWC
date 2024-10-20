@@ -1,10 +1,11 @@
 resource "aws_eks_cluster" "mycluster" {
   name     = var.cluster_name
   role_arn = var.cluster_role
-
+  for_each = toset([var.subnet_id])
+  
 
   vpc_config {
-    subnet_ids = [var.subnet_id]
+    subnet_ids = each.key
   }
 
 }
