@@ -16,6 +16,3 @@ variable "cluster_name"{
 variable "instance_types"{
     type = string
 }
-variable "node_group_name"{
-    type = string
-}
