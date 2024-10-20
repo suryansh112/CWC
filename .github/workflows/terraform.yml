@@ -1,6 +1,5 @@
 name: EKS-Workflow
 on:
-  push:
   workflow_dispatch:
     inputs:
       command: 
