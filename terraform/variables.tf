@@ -7,7 +7,7 @@ variable "role" {
     sensitive = true
 }
 variable "subnet_id" {
-    default = "subnet-02061f395d0505b4f"
+    default = ["subnet-02061f395d0505b4f","subnet-09e00b2fbe4cf8db0"]
 }
 variable "instance_types"{
     default = "t2.micro"
