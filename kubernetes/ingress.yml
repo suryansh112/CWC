@@ -9,7 +9,6 @@ metadata:
   name: pythoningress
 spec:
     rules:
-     - host: {INGRESS_IP}
      - http:
         paths:
         - backend:
@@ -19,7 +18,3 @@ spec:
                 number: 5000
           path: /
           pathType: Prefix
-    tls:
-    - hosts:
-      - {INGRESS_IP}
-      secretName: ingress-local-tls
