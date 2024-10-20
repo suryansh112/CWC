@@ -5,7 +5,7 @@ resource "aws_eks_cluster" "mycluster" {
   
 
   vpc_config {
-    subnet_ids = each.key
+    subnet_ids = toset([each.key])
   }
 
 }
