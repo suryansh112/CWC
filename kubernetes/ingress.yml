@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-  name: python-app
+  name: pythoningress
 spec:
     rules:
      - host: pythonapp.{INGRESS_IP}nip.io
@@ -14,7 +14,7 @@ spec:
         paths:
         - backend:
             service:
-              name: python-app
+              name: pythonappservice
               port:
                 number: 5000
           path: /
