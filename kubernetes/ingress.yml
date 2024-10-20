@@ -9,7 +9,7 @@ metadata:
   name: python-app
 spec:
     rules:
-     - host: python-app.{INGRESS_IP}nip.io
+     - host: pythonapp.{INGRESS_IP}nip.io
      - http:
         paths:
         - backend:
@@ -21,5 +21,5 @@ spec:
           pathType: Prefix
     tls:
     - hosts:
-      - python-app.{INGRESS_IP}nip.io
+      - pythonapp.{INGRESS_IP}nip.io
       secretName: ingress-local-tls
