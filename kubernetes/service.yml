@@ -1,14 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: pythonsvc
-  name: pythonappservice
+  name: python-app-service
 spec:
-  ports:
-  - port: 5000
-    protocol: TCP
-    targetPort: 5000
   selector:
-    app: frontend 
-  type: NodePort
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
