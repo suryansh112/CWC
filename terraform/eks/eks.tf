@@ -3,6 +3,7 @@ resource "aws_eks_cluster" "mycluster" {
   role_arn = var.cluster_role
   enabled_cluster_log_types = ["api","audit","authenticator","controllerManager","scheduler"]
   depends_on = [aws_cloudwatch_log_group.eks-cluster]
+  addon_name   = "vpc-cni"
   
   vpc_config {
     subnet_ids = var.subnet_id
