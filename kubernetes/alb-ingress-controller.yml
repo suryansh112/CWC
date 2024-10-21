@@ -21,7 +21,6 @@ spec:
           image: amazon/aws-alb-ingress-controller:v2.3.0
           args:
             - --cluster-name=my-cluster
-            - --region=us-east-1
             - --aws-vpc-id=vpc-0d31a5efcad0744a6
             - --ingress-class=alb
           resources:
