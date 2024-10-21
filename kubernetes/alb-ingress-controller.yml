@@ -15,7 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: aws-load-balancer-controller
     spec:
-      serviceAccountName: aws-load-balancer-controller
+      serviceAccountName: aws-load-balancer-controller-sa
       containers:
         - name: aws-load-balancer-controller
           image: public.ecr.aws/eks/aws-load-balancer-controller:v2.9.0
