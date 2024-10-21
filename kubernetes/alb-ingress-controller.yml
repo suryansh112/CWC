@@ -4,6 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/name: aws-load-balancer-controller
   name: aws-load-balancer-controller
+  namespace: default
 spec:
   replicas: 1
   selector:
