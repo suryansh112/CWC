@@ -18,7 +18,7 @@ spec:
       serviceAccountName: aws-load-balancer-controller
       containers:
         - name: aws-load-balancer-controller
-          image: amazon/aws-alb-ingress-controller:v2.9.2
+          image: public.ecr.aws/eks/aws-load-balancer-controller:v2.9.2
           args:
             - --cluster-name=my-cluster
             - --aws-vpc-id=vpc-0d31a5efcad0744a6
