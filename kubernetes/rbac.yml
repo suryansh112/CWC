@@ -1,41 +1,61 @@
----
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  labels:
-    app.kubernetes.io/name: alb-ingress-controller
   name: alb-ingress-controller-role
+  namespace: default
 rules:
   - apiGroups:
       - ""
+    resources:
+      - services
+      - endpoints
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
       - extensions
     resources:
-      - configmaps
-      - endpoints
-      - events
       - ingresses
       - ingresses/status
-      - services
     verbs:
-      - create
       - get
       - list
-      - update
       - watch
-      - patch
+      - update
   - apiGroups:
       - ""
-      - extensions
     resources:
-      - nodes
-      - pods
-      - secrets
-      - services
-      - namespaces
+      - configmaps
     verbs:
       - get
       - list
       - watch
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - patch
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+      - ingresses/status
+    verbs:
+      - update
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -50,4 +70,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: aws-load-balancer-controller-sa
-    namespace: kube-system
+    namespace: default
