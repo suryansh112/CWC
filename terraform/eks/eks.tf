@@ -39,7 +39,7 @@ resource "aws_cloudwatch_log_group" "eks-cluster" {
   retention_in_days = 7
 
 }
-/*resource "aws_eks_addon" "cwc-addon" {
+resource "aws_eks_addon" "cwc-addon" {
   cluster_name = aws_eks_cluster.mycluster.name
   addon_name   = "amazon-cloudwatch-observability"
-}*/
+}
