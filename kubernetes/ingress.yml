@@ -10,7 +10,8 @@ metadata:
   namespace: kube-system
 spec:
     rules:
-     - http:
+     - host: my-app.example.com
+       http:
         paths:
         - backend:
             service:
