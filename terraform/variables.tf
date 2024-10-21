@@ -27,3 +27,6 @@ variable "node_role"{
 variable "node_group_name"{
     default = "my-node-group"
 }
+variable "github_workspace"{
+    type = string
+}

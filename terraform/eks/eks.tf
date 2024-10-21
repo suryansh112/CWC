@@ -23,7 +23,7 @@ resource "aws_eks_node_group" "mynodegroup" {
 
   instance_types = [var.instance_types]
   scaling_config {
-    desired_size = 1
+    desired_size = 2
     max_size     = 2
     min_size     = 1
 
@@ -38,8 +38,4 @@ resource "aws_cloudwatch_log_group" "eks-cluster" {
   name              = "/aws/eks/${var.cluster_name}/cluster"
   retention_in_days = 7
 
-}
-resource "aws_eks_addon" "cwc-addon" {
-  cluster_name = aws_eks_cluster.mycluster.name
-  addon_name   = "amazon-cloudwatch-observability"
 }

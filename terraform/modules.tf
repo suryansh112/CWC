@@ -8,3 +8,8 @@ module "eks"{
     subnet_id = var.subnet_id
 
 }
+module "alb"{
+    source = "./alb"
+    github_workspace = var.github_workspace
+
+}
