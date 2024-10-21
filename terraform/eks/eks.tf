@@ -3,7 +3,6 @@ resource "aws_eks_cluster" "mycluster" {
   role_arn = var.cluster_role
   enabled_cluster_log_types = ["api","audit","authenticator","controllerManager","scheduler"]
   depends_on = [aws_cloudwatch_log_group.eks-cluster]
-  addon_name   = "vpc-cni"
   
   vpc_config {
     subnet_ids = var.subnet_id
@@ -39,4 +38,8 @@ resource "aws_cloudwatch_log_group" "eks-cluster" {
   name              = "/aws/eks/${var.cluster_name}/cluster"
   retention_in_days = 7
 
+}
+resource "aws_eks_addon" "cwc-addon" {
+  cluster_name = aws_eks_cluster.mycluster.name
+  addon_name   = "amazon-cloudwatch-observability"
 }
