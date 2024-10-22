@@ -1,3 +1,24 @@
+resource "helm_release" "alb_ingress_controller" {
+  name       = "alb-ingress-controller"
+  repository = "https://aws.github.io/eks-charts"
+  chart      = "aws-load-balancer-controller"
+  namespace  = "default"
+
+  values = [
+    <<EOF
+    clusterName: ${aws_eks_cluster.mycluster.name}
+    serviceAccount:
+      create: false
+      name: alb-ingress-controller-sa
+    region: ${var.region}
+    vpcId: ${data.aws_vpc.default.id}
+    EOF
+  ]
+}
+
+data "aws_vpc" "default"{
+    default = true
+}
 resource "aws_iam_role" "alb_ingress_role" {
   name = "alb-ingress-controller-role"
 
@@ -50,6 +71,6 @@ resource "aws_security_group" "alb_ingress_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-data "aws_vpc" "default"{
-  default = true
+output "alb_dns" {
+  value = aws_lb.alb.dns_name
 }
