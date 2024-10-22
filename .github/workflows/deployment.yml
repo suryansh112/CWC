@@ -51,4 +51,4 @@ jobs:
       env:
         INGRESS_IP: ${{env.INGRESS_IP}}
       run: |
-          kubectl apply -f kubernetes/
+          kubectl delete -f kubernetes/
