@@ -54,8 +54,15 @@ rules:
     resources:
       - ingresses
       - ingresses/status
+      - ingressclasses
     verbs:
       - update
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - delete
   - apiGroups:
       - elbv2.k8s.aws
     resources:
