@@ -16,3 +16,7 @@ variable "cluster_name"{
 variable "instance_types"{
     type = string
 }
+variable "role" {
+    type = string
+    sensitive = true
+}

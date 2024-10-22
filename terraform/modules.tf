@@ -5,6 +5,7 @@ module "eks"{
     cluster_name = var.cluster_name
     instance_types = var.instance_types
     node_group_name = var.node_group_name
+    role = var.role
     subnet_id = var.subnet_id
 
 }
