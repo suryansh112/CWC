@@ -6,7 +6,7 @@ variable "region"{
     type =  string
     sensitive = false
 }
-variablec "cluster_name"{
+variable "cluster_name"{
     type =  string
     sensitive = false
 }
