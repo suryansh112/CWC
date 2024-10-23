@@ -3,6 +3,7 @@ resource "helm_release" "alb_ingress_controller" {
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
   namespace  = "default"
+  version    = "2.9.2"
 
   values = [
     <<EOF
