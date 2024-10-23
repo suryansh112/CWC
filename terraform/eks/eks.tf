@@ -39,3 +39,9 @@ resource "aws_cloudwatch_log_group" "eks-cluster" {
   retention_in_days = 7
 
 }
+output "kubeconfig-certificate-authority-data" {
+  value = aws_eks_cluster.example.certificate_authority[0].data
+}
+output "kubeconfig-certificate-authority-data-token" {
+  value = aws_eks_cluster.example.certificate_authority[0].data.token
+}
