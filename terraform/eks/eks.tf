@@ -42,3 +42,6 @@ resource "aws_cloudwatch_log_group" "eks-cluster" {
 output "kubeconfig-certificate-authority-data" {
   value = aws_eks_cluster.mycluster.certificate_authority[0].data
 }
+output "endpoint" {
+  value = aws_eks_cluster.mycluster.endpoint
+}
