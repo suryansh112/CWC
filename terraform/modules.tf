@@ -9,10 +9,10 @@ module "eks"{
     subnet_id = var.subnet_id
 
 }
-/*module "alb"{
+module "alb"{
     source = "./alb"
     github_workspace = var.github_workspace
     region = var.region
     cluster_name = var.cluster_name
 
-}*/
+}
