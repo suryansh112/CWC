@@ -6,7 +6,7 @@ resource "helm_release" "alb_ingress_controller" {
 
   values = [
     <<EOF
-    clusterName: ${aws_eks_cluster.mycluster.name}
+    clusterName: ${var.cluster_name}
     serviceAccount:
       create: false
       name: alb-ingress-controller-sa

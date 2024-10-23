@@ -13,5 +13,6 @@ module "eks"{
     source = "./alb"
     github_workspace = var.github_workspace
     region = var.region
+    cluster_name = var.cluster_name
 
 }*/
