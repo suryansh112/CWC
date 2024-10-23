@@ -45,3 +45,10 @@ output "kubeconfig-certificate-authority-data" {
 output "endpoint" {
   value = aws_eks_cluster.mycluster.endpoint
 }
+output {
+  value = data.aws_eks_cluster_auth.mycluster.token
+  sensitive = true
+}
+data "aws_eks_cluster_auth" "mycluster" {
+  name = var.cluster_name
+}
