@@ -71,6 +71,3 @@ resource "aws_security_group" "alb_ingress_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-output "alb_dns" {
-  value = aws_lb.alb.dns_name
-}
