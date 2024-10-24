@@ -1,4 +1,4 @@
-resource "helm_release" "alb_ingress_controller" {
+/*resource "helm_release" "alb_ingress_controller" {
   name       = "alb-ingress-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
@@ -15,7 +15,7 @@ resource "helm_release" "alb_ingress_controller" {
     vpcId: ${data.aws_vpc.default.id}
     EOF
   ]
-}
+}*/
 
 data "aws_vpc" "default"{
     default = true
