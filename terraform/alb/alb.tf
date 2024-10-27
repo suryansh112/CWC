@@ -1,4 +1,4 @@
-/*resource "helm_release" "alb_ingress_controller" {
+resource "helm_release" "alb_ingress_controller" {
   name       = "alb-ingress-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
@@ -10,12 +10,12 @@
     clusterName: ${var.cluster_name}
     serviceAccount:
       create: false
-      name: alb-ingress-controller-sa
+      name: aws-load-balancer-controller
     region: ${var.region}
     vpcId: ${data.aws_vpc.default.id}
     EOF
   ]
-}*/
+}
 
 data "aws_vpc" "default"{
     default = true
