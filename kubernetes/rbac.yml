@@ -87,5 +87,5 @@ roleRef:
   name: alb-ingress-controller-role
 subjects:
   - kind: ServiceAccount
-    name: aws-load-balancer-controller-sa
+    name: aws-load-balancer-controller
     namespace: default
