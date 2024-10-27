@@ -15,6 +15,7 @@ spec:
         - backend:
             service:
               name: python-app-service
+              namespace: default
               port:
                 number: 80
           path: /
