@@ -6,3 +6,6 @@ metadata:
 spec:
   type: ExternalName
   externalName: python-app-service.default.svc.cluster.local
+  ports:
+  - port: 80  
+    targetPort: 80
