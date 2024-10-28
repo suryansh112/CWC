@@ -34,27 +34,44 @@ resource "aws_eks_node_group" "mynodegroup" {
   }
 
 }
+
 resource "aws_cloudwatch_log_group" "eks-cluster" {
   name              = "/aws/eks/${var.cluster_name}/cluster"
   retention_in_days = 7
 
 }
+
+resource "aws_iam_openid_connect_provider" "eksprovider" {
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = [aws_eks_cluster.mycluster.certificates[0].sha1_fingerprint]
+  url             = aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
+}
+
 output "kubeconfig-certificate-authority-data" {
   value = aws_eks_cluster.mycluster.certificate_authority[0].data
 }
+
 output "endpoint" {
   value = aws_eks_cluster.mycluster.endpoint
 }
+
 output "token"{
   value = data.aws_eks_cluster_auth.mycluster.token
   sensitive = true
 }
+
 data "aws_eks_cluster" "mycluster"{
   name = aws_eks_cluster.mycluster.name
 }
+
 data "aws_eks_cluster_auth" "mycluster" {
   name = var.cluster_name
 }
+
 output "identity-oidc-issuer" {
   value = data.aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
+}
+
+output "federated_arn"{
+  value = aws_iam_openid_connect_provider.eksprovider.arn
 }

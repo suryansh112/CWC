@@ -10,7 +10,7 @@ variable "cluster_name"{
     type =  string
     sensitive = false
 }
-variable "federated_url"{
+variable "federated_arn"{
     type =  string
     sensitive = false
 }

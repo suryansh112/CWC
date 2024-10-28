@@ -37,7 +37,7 @@ resource "aws_iam_role" "alb_ingress_role" {
       {
         Effect = "Allow"
         Principal = {
-          Federated = var.federated_url
+          Federated = var.federated_arn
         }
         Action = "sts:AssumeRoleWithWebIdentity"
       }
@@ -62,7 +62,4 @@ resource "kubernetes_service_account" "eks_service_account" {
       "eks.amazonaws.com/role-arn" = aws_iam_role.alb_ingress_role.arn
     }
   }
-}
-output "url" {
-  value = "${var.federated_url}"
 }
