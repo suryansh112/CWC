@@ -43,8 +43,12 @@ resource "aws_cloudwatch_log_group" "eks-cluster" {
 
 resource "aws_iam_openid_connect_provider" "eksprovider" {
   client_id_list  = ["sts.amazonaws.com"]
-  thumbprint_list = [aws_eks_cluster.mycluster.certificates[0].sha1_fingerprint]
+  thumbprint_list = [data.tls_certificate.mycert.certificates[0].sha1_fingerprint]
   url             = aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
+}
+
+data "tls_certificate" "mycert" {
+  url = aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
 }
 
 output "kubeconfig-certificate-authority-data" {
