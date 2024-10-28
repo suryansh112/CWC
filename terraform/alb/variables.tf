@@ -12,7 +12,7 @@ variable "cluster_name"{
 }
 variable "federated_url"{
     type =  string
-    sensitive = true
+    sensitive = false
 }
 variable "endpoint"{
     type = string 

@@ -63,3 +63,6 @@ resource "kubernetes_service_account" "eks_service_account" {
     }
   }
 }
+output "url" {
+  value = "${var.federated_url}"
+}
