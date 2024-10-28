@@ -5,17 +5,20 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: instance
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
   name: python-ingress
   namespace: default
 spec:
-    rules:
-     - http:
-        paths:
-        - backend:
-            service:
-              name: python-app-service
-              port:
-                number: 80
-          path: /
-          pathType: Prefix
+  tls: 
+  - hosts: 
+    - www.test.doc-example.com
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: python-app-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
