@@ -3,7 +3,7 @@ resource "helm_release" "alb_ingress_controller" {
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
   namespace  = "kube-system"
-  depends_on = [module.eks.aws_eks_cluster.mycluster]
+  depends_on = [var.endpoint]
 
 
   values = [
@@ -37,7 +37,7 @@ resource "aws_iam_role" "alb_ingress_role" {
       {
         Effect = "Allow"
         Principal = {
-          Federated = module.eks.identity-oidc-issuer
+          Federated = var.federated_url
         }
         Action = "sts:AssumeRole"
       },

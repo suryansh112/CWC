@@ -14,5 +14,6 @@ module "alb"{
     github_workspace = var.github_workspace
     region = var.region
     cluster_name = var.cluster_name
-
+    federated_url = module.eks.identity-oidc-issuer
+    endpoint = module.eks.endpoint
 }
