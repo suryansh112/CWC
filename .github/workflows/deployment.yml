@@ -50,6 +50,7 @@ jobs:
     - name: Deploy
       env:
         INGRESS_IP: ${{env.INGRESS_IP}}
+        CERTIFICATE_ARN: ${{secrets.CERTIFICATE_ARN}}
       run: |
           kubectl apply -f kubernetes/deployment.yml
           kubectl apply -f kubernetes/ingress.yml
