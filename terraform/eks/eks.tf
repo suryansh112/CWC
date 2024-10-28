@@ -52,6 +52,9 @@ output "token"{
 data "aws_eks_cluster_auth" "mycluster" {
   name = var.cluster_name
 }
+data "aws_eks_cluster" "mycluster" {
+  name = var.cluster_name
+}
 output "identity-oidc-issuer" {
   value = data.aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
 }
