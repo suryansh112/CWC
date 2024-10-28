@@ -40,7 +40,7 @@ resource "aws_iam_role" "alb_ingress_role" {
           Federated = "${var.federated_url}"
         }
         Action = "sts:AssumeRoleWithWebIdentity"
-      },
+      }
     ]
   })
 }
