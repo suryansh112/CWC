@@ -37,7 +37,7 @@ resource "aws_iam_role" "alb_ingress_role" {
       {
         Effect = "Allow"
         Principal = {
-          Federated = "var.federated_url"
+          Federated = "${var.federated_url}"
         }
         Action = "sts:AssumeRoleWithWebIdentity"
       },
