@@ -55,5 +55,4 @@ jobs:
           kubectl apply -f kubernetes/serviceaccount.yml
           kubectl apply -f kubernetes/ingress.yml
           kubectl apply -f kubernetes/service.yml
-          kubectl apply -f kubernetes/externalsvc.yml
 

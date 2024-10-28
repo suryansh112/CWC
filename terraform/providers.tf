@@ -7,6 +7,9 @@ terraform {
     helm = {
       source = "hashicorp/helm"
     }
+    kubernetes ={
+      source = "hashicorp/kubernetes"
+    }
   }
 }
 
@@ -19,4 +22,9 @@ provider "helm" {
     cluster_ca_certificate = base64decode(module.eks.kubeconfig-certificate-authority-data)
     token                  = module.eks.token
   }
+}
+provider "kubernetes" {
+  host                   = module.eks.endpoint
+  token                  = module.eks.token
+  cluster_ca_certificate = base64decode(module.eks.kubeconfig-certificate-authority-data)
 }

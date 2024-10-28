@@ -3,6 +3,7 @@ resource "helm_release" "alb_ingress_controller" {
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
   namespace  = "kube-system"
+  depends_on = [module.eks.aws_eks_cluster.mycluster]
 
 
   values = [
@@ -33,6 +34,13 @@ resource "aws_iam_role" "alb_ingress_role" {
         }
         Action = "sts:AssumeRole"
       },
+      {
+        Effect = "Allow"
+        Principal = {
+          Federated = module.eks.identity-oidc-issuer
+        }
+        Action = "sts:AssumeRole"
+      },
     ]
   })
 }
@@ -45,4 +53,13 @@ resource "aws_iam_policy" "alb_ingress_policy" {
 resource "aws_iam_role_policy_attachment" "alb_ingress_policy_attachment" {
   role       = aws_iam_role.alb_ingress_role.name
   policy_arn = aws_iam_policy.alb_ingress_policy.arn
+}
+resource "kubernetes_service_account" "eks_service_account" {
+  metadata {
+    name      = "aws-load-balancer-controller"
+    namespace = "kube-system"
+    annotations = {
+      "eks.amazonaws.com/role-arn" = aws_iam_role.alb_ingress_role.arn
+    }
+  }
 }
