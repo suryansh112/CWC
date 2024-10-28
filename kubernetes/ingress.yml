@@ -10,9 +10,6 @@ metadata:
   name: python-ingress
   namespace: default
 spec:
-  tls: 
-  - hosts: 
-    - www.test.doc-example.com
   rules:
   - http:
       paths:
