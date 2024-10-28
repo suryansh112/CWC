@@ -14,6 +14,6 @@ module "alb"{
     github_workspace = var.github_workspace
     region = var.region
     cluster_name = var.cluster_name
-    federated_url = module.eks.federated_arn
+    federated_arn = module.eks.federated_arn
     endpoint = module.eks.endpoint
 }
