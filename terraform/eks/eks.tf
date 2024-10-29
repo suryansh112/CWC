@@ -47,6 +47,22 @@ resource "aws_iam_openid_connect_provider" "eksprovider" {
   url             = aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
 }
 
+resource "aws_eks_access_policy_association" "access" {
+  cluster_name  = aws_eks_cluster.mycluster.name
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+  principal_arn = var.role
+
+  access_scope {
+    type       = "cluster"
+  }
+}
+
+resource "aws_eks_access_entry" "entry" {
+  cluster_name      = aws_eks_cluster.mycluster.name
+  principal_arn     = var.role
+  type              = "STANDARD"
+}
+
 data "tls_certificate" "mycert" {
   url = aws_eks_cluster.mycluster.identity[0].oidc[0].issuer
 }
