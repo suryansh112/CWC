@@ -49,7 +49,7 @@ resource "aws_iam_openid_connect_provider" "eksprovider" {
 
 resource "aws_eks_access_policy_association" "access" {
   cluster_name  = aws_eks_cluster.mycluster.name
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
   principal_arn = var.role
 
   access_scope {
