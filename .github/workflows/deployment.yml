@@ -8,7 +8,29 @@ permissions:
   id-token: write  
   contents: read
 jobs:
+  BUILD_TEST:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone Repo
+      uses: actions/checkout@main
+    - name: Setup Python 
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10
+    - name: Install Dependencies
+      run: |
+            cd ./application
+            python -m pip install --upgrade pip
+            pip -r install requirements.txt
+    - name: Run Test
+      run: |
+           cd ./application
+           pip install pytest pytest-cov
+           pytest test_app.py
+
+
   Docker_Push:
+    needs: BUILD_TEST
     runs-on: ubuntu-latest
     steps:
     - name: Clone Repo
