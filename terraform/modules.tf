@@ -15,5 +15,6 @@ module "alb"{
     region = var.region
     cluster_name = var.cluster_name
     federated_arn = module.eks.federated_arn
+    node = module.eks.node_group_name
     endpoint = module.eks.endpoint
 }

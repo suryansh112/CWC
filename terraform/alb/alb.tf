@@ -62,4 +62,5 @@ resource "kubernetes_service_account" "eks_service_account" {
       "eks.amazonaws.com/role-arn" = aws_iam_role.alb_ingress_role.arn
     }
   }
+  depends_on = [ var.node ]
 }

@@ -14,3 +14,7 @@ output "federated_arn"{
 output "kubeconfig-certificate-authority-data" {
   value = aws_eks_cluster.mycluster.certificate_authority[0].data
 }
+
+output "node_group_name" {
+  value = aws_eks_node_group.mycluster_ng.node_group_name
+}
