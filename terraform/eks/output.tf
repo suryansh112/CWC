@@ -16,5 +16,5 @@ output "kubeconfig-certificate-authority-data" {
 }
 
 output "node_group_name" {
-  value = aws_eks_node_group.mycluster_ng.node_group_name
+  value = aws_eks_node_group.mynodegroup.node_group_name
 }
