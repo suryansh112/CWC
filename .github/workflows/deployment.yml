@@ -47,7 +47,7 @@ jobs:
            docker tag python-app:latest suryansh1234/my-repo:python-app
            docker push suryansh1234/my-repo:python-app
   deployment:
-    if: never()
+    if: false
     needs: Docker_Push
     runs-on: ubuntu-latest
     steps:
