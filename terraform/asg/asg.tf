@@ -10,8 +10,10 @@ values = [
     autoDiscovery:
       clusterName: ${var.cluster_name}
     awsRegion: ${var.region}
-    annotations:
-      arn: ${resource.aws_iam_role.cluster_autoscale_role.arn}
+    rbac:
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: ${resource.aws_iam_role.cluster_autoscale_role.arn}
     EOF
   ]
   
