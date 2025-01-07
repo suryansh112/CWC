@@ -18,3 +18,14 @@ module "alb"{
     node = module.eks.node_group_name
     endpoint = module.eks.endpoint
 }
+
+module "asg"{
+    source = "./asg"
+    github_workspace = var.github_workspace
+    region = var.region
+    cluster_name = var.cluster_name
+    federated_arn = module.eks.federated_arn
+    node = module.eks.node_group_name
+    endpoint = module.eks.endpoint
+    
+}
