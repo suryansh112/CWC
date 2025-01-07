@@ -23,3 +23,8 @@ variable "node" {
     type = string
     sensitive = false
 }
+
+variable "oidc_provider"{
+    type = string
+    sensitive = false
+}

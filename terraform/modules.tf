@@ -27,5 +27,6 @@ module "asg"{
     federated_arn = module.eks.federated_arn
     node = module.eks.node_group_name
     endpoint = module.eks.endpoint
+    oidc_provider = module.eks.oidc_url
     
 }

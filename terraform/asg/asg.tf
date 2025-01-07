@@ -34,8 +34,8 @@ resource "aws_iam_role" "cluster_autoscale_role" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {
             StringEquals = {
-                "${var.federated_arn}:sub" = "system:serviceaccount:kube-system:cluster-autoscaler-aws-cluster-autoscaler"
-                "${var.federated_arn}:aud" = "sts.amazonaws.com"
+                "${var.oidc_provider}:sub" = "system:serviceaccount:kube-system:cluster-autoscaler-aws-cluster-autoscaler"
+                "${var.oidc_provider}:aud" = "sts.amazonaws.com"
             }
         }
       }
