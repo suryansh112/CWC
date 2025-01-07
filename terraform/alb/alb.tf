@@ -3,7 +3,7 @@ resource "helm_release" "alb_ingress_controller" {
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
   namespace  = "kube-system"
-  depends_on = [var.endpoint]
+  depends_on = [var.endpoint,var.node]
 
 
   values = [
