@@ -6,10 +6,15 @@ variable "role" {
     type = string
     sensitive = true
 }
-variable "subnet_id" {
+/*variable "subnet_id" {
     type = list(string)
     default = ["subnet-02061f395d0505b4f","subnet-09e00b2fbe4cf8db0"]
+}*/
+variable "subnet_id" {
+    type = list(string)
+    default = ["subnet-02cd9e697ce947584","subnet-08695bfa27c62732b"]
 }
+
 variable "instance_types"{
     default = "t2.medium"
 }
