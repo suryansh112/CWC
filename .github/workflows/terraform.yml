@@ -31,6 +31,10 @@ jobs:
         role-to-assume: ${{secrets.ROLE_NAME}} 
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: us-east-1
+    - name: Setup  terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "3.1.2"
     - name: Creating EKS
       run: |
           cd terraform
@@ -49,6 +53,10 @@ jobs:
         role-to-assume: ${{secrets.ROLE_NAME}} 
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: us-east-1
+    - name: Setup  terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "3.1.2"
     - name: Destroying EKS
       run: |
           cd terraform
