@@ -37,8 +37,8 @@ jobs:
       run: |
           cd terraform
           terraform init
-          terraform plan -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" -var="github_workspace=$GITHUB_WORKSPACE"
-          terraform apply -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" -var="github_workspace=$GITHUB_WORKSPACE" --auto-approve
+          TF_LOG=debug terraform plan -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" -var="github_workspace=$GITHUB_WORKSPACE"
+          TF_LOG=debug terraform apply -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" -var="github_workspace=$GITHUB_WORKSPACE" --auto-approve
   TERRAFORM_PLAN_DESTROY:
     if: inputs.command == 'destroy'
     runs-on: ubuntu-latest
@@ -57,4 +57,4 @@ jobs:
       run: |
           cd terraform
           terraform init
-          terraform destroy --auto-approve -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" -var="github_workspace=$GITHUB_WORKSPACE"
+          TF_LOG=debug terraform destroy --auto-approve -var="role=$ROLE_NAME" -var="cluster_role=$CLUSTER_ROLE" -var="node_role=$NODE_ROLE" -var="github_workspace=$GITHUB_WORKSPACE"
