@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/role/elb: 
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/a5e7756a-157b-4c77-a2b4-ca989f9b0d37"
   name: python-ingress
-  namespace: kube-system
+  namespace: default
 spec:
   rules:
   - http:
