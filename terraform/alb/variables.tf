@@ -23,3 +23,8 @@ variable "node" {
     type = string
     sensitive = false
 }
+
+variable "vpc_id" {
+    type = string
+    sensitive = false
+}

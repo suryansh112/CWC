@@ -15,6 +15,11 @@ variable "subnet_id" {
     default = ["subnet-02cd9e697ce947584","subnet-08695bfa27c62732b"]
 }
 
+variable "vpc_id" {
+    type = string
+    default = "vpc-0b893daaed374320c"
+}
+
 variable "instance_types"{
     default = "t2.medium"
 }

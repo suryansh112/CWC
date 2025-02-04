@@ -13,13 +13,13 @@ resource "helm_release" "alb_ingress_controller" {
       create: false
       name: aws-load-balancer-controller
     region: ${var.region}
-    vpcId: ${data.aws_vpc.default.id}
+    vpcId: ${data.aws_vpc.eks-vpc.id}
     EOF
   ]
 }
 
-data "aws_vpc" "default"{
-    default = true
+data "aws_vpc" "eks-vpc"{
+    id = var.vpc_id
 }
 resource "aws_iam_role" "alb_ingress_role" {
   name = "alb-ingress-controller-role"

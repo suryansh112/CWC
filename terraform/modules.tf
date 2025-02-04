@@ -17,6 +17,7 @@ module "alb"{
     federated_arn = module.eks.federated_arn
     node = module.eks.node_group_name
     endpoint = module.eks.endpoint
+    vpc_id = var.vpc_id
 }
 
 module "asg"{
