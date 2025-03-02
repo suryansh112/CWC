@@ -8,4 +8,4 @@ spec:
   externalName: argocd-server.argocd.svc.cluster.local
   ports:
   - port: 80
-    targetPort: 32604
+    targetPort: 80
