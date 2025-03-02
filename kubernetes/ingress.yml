@@ -7,7 +7,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/subnets: "subnet-02851a7ef98df37d9,subnet-076aa949dd5821d9b"
-    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/a5e7756a-157b-4c77-a2b4-ca989f9b0d37"
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/7d97a0a3-02ed-41d5-af26-fd4bb4805132"
   name: python-ingress
   namespace: default
 spec:
@@ -20,5 +20,12 @@ spec:
             port:
               number: 80
         path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: argocd-server.argocd.svc.cluster.local
+            port:
+              number: 80
+        path: /argocd
         pathType: Prefix
 
