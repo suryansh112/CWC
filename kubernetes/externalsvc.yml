@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: python-service-external
-  namespace: kube-system
+  name: argocd-external-service
+  namespace: default
 spec:
   type: ExternalName
-  externalName: python-app-service.default.svc.cluster.local
+  externalName: argocd-server.argocd.svc.cluster.local
   ports:
   - port: 80
-    targetPort: 32265
+    targetPort: 32604
