@@ -36,4 +36,5 @@ module "argocd" {
     source = "./argocd"
     endpoint = module.eks.endpoint
     node = module.eks.node_group_name
+    alb_name = module.alb.alb_name
 }

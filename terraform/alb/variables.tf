@@ -28,3 +28,7 @@ variable "vpc_id" {
     type = string
     sensitive = false
 }
+
+output "alb_name" {
+  value = helm_release.alb_ingress_controller.name
+}
