@@ -31,3 +31,9 @@ module "asg"{
     oidc_provider = module.eks.oidc_url
     
 }
+
+module "argocd" {
+    source = "./argocd"
+    endpoint = module.eks.endpoint
+    node = module.eks.node_group_name
+}
