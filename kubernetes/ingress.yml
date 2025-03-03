@@ -21,8 +21,8 @@ spec:
           service:
             name: python-app-service
             port:
-              number: 80
-        path: /
+              number: 8042
+        path: /python
         pathType: Prefix
 ---
 apiVersion: networking.k8s.io/v1
