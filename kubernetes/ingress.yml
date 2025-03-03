@@ -2,11 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    alb.ingress.kubernetes.io/group.name: "group"
+    alb.ingress.kubernetes.io/group.order: "1"
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/subnets: "subnet-02851a7ef98df37d9,subnet-076aa949dd5821d9b"
+    alb.ingress.kubernetes.io/load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/7d97a0a3-02ed-41d5-af26-fd4bb4805132"
   name: python-ingress
   namespace: default
@@ -29,3 +32,30 @@ spec:
         path: /argocd
         pathType: Prefix
 
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/group.name: "group"
+    alb.ingress.kubernetes.io/group.order: "2"
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/subnets: "subnet-02851a7ef98df37d9,subnet-076aa949dd5821d9b"
+    alb.ingress.kubernetes.io/load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/7d97a0a3-02ed-41d5-af26-fd4bb4805132"
+  name: python-ingress
+  namespace: argocd
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+        path: /argocd
+        pathType: Prefix
