@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/subnets: "subnet-02851a7ef98df37d9,subnet-076aa949dd5821d9b"
     alb.ingress.kubernetes.io/load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/7d97a0a3-02ed-41d5-af26-fd4bb4805132"
-  name: python-ingress
+  name: app-ingress
   namespace: default
 spec:
   rules:
@@ -40,7 +40,7 @@ metadata:
       [{"field":"http-header","httpHeaderConfig":{"httpHeaderName": "Content-Type", "values":["application/grpc"]}}]
     alb.ingress.kubernetes.io/load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:055411382616:certificate/7d97a0a3-02ed-41d5-af26-fd4bb4805132"
-  name: python-ingress
+  name: argocd-ingress
   namespace: argocd
 spec:
   rules:
@@ -51,7 +51,7 @@ spec:
             name: argogrpc
             port:
               number: 443
-        path: /argocd
+        path: /argocd/grpc
         pathType: Prefix
       - backend:
           service:
