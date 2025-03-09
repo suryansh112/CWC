@@ -7,6 +7,7 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: "/app"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/subnets: "subnet-02851a7ef98df37d9,subnet-076aa949dd5821d9b"
     alb.ingress.kubernetes.io/load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
@@ -23,6 +24,13 @@ spec:
             port:
               number: 80
         path: /app
+        pathType: Prefix
+      - backend:
+          service:
+            name: python-app-service
+            port:
+              number: 80
+        path: /submit
         pathType: Prefix
 ---
 apiVersion: networking.k8s.io/v1
