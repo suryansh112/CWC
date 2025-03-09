@@ -24,7 +24,7 @@
 #               number: 80
 #         path: /
 #         pathType: Prefix
----
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -33,7 +33,6 @@ metadata:
     alb.ingress.kubernetes.io/group.order: "2"
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/subnets: "subnet-02851a7ef98df37d9,subnet-076aa949dd5821d9b"
     alb.ingress.kubernetes.io/conditions.argogrpc: |
@@ -43,8 +42,10 @@ metadata:
   name: argocd-ingress
   namespace: argocd
 spec:
+  ingressClassName: alb
   rules:
-  - http:
+  - host: app.doc-example.com
+    http:
       paths:
       - backend:
           service:
