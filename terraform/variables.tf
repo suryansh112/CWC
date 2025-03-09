@@ -12,7 +12,7 @@ variable "role" {
 }*/
 variable "subnet_id" {
     type = list(string)
-    default = ["subnet-02cd9e697ce947584","subnet-08695bfa27c62732b"]
+    default = ["subnet-02851a7ef98df37d9","subnet-076aa949dd5821d9b"]
 }
 
 variable "vpc_id" {
@@ -21,7 +21,7 @@ variable "vpc_id" {
 }
 
 variable "instance_types"{
-    default = "t2.medium"
+    default = "t2.micro"
 }
 variable "cluster_name"{
     default = "my-cluster"
