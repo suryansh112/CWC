@@ -9,7 +9,7 @@ def client():
 
 def test_home(client):
     """Test the index page loads correctly"""
-    rv = client.get('/')
+    rv = client.get('/app')
     assert rv.status_code == 200
     assert b"Enter Your Name" in rv.data
 
