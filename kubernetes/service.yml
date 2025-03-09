@@ -7,7 +7,7 @@ spec:
     app: frontend
   ports:
     - protocol: TCP
-      port: 8042
+      port: 80
       targetPort: 5000
       nodePort: 32260
   type: NodePort
