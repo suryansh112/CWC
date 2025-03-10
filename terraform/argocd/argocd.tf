@@ -12,7 +12,7 @@ resource "helm_release" "argocd" {
     <<EOF
     server:
       service:
-        type: NodePort
+        type: ClusterIP
     insecure: true
     EOF
   ]
