@@ -14,10 +14,6 @@ resource "helm_release" "argocd" {
       service:
         type: NodePort
     insecure: true
-    configs:
-      params:
-        create: true
-        server.insecure: true
     EOF
   ]
     
