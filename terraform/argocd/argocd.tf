@@ -13,7 +13,6 @@ resource "helm_release" "argocd" {
     server:
       service:
         type: ClusterIP
-    insecure: true
     EOF
   ]
     
